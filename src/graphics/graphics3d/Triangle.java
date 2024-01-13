@@ -3,6 +3,7 @@ package graphics.graphics3d;
 import java.awt.Color;
 
 import math.Vector3;
+import math.VectorUtils;
 
 
 public class Triangle {

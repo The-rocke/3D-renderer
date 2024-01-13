@@ -6,7 +6,7 @@ import math.Vector3;
 
 public class Object3d {
 
-	Vector3 position = new Vector3(0d, 0d, 0d);
+	public Vector3 position = new Vector3(0d, 0d, 0d);
 
 	public ArrayList<Triangle> geometry = new ArrayList<Triangle>(0);
 
