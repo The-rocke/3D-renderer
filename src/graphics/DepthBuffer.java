@@ -6,22 +6,30 @@ import java.util.ArrayList;
 
 public class DepthBuffer {
 
-	public PixelDepthList[] pixelList;
+	public PixelData[] pixelList;
 	
 	public DepthBuffer(int screenWidth, int screenHeight) {
-		pixelList = new PixelDepthList[screenWidth * screenHeight];
+		pixelList = new PixelData[screenWidth * screenHeight];
 		for(int i = 0; i < pixelList.length; i++) {
-			pixelList[i] = new PixelDepthList();
+			pixelList[i] = new PixelData();
 		}
 	}
 	
-	
-	
-	// List of PixelData
-	class PixelDepthList {
-		ArrayList<Color> pixelDepthList = new ArrayList<>();
+	public boolean drawPixel(int position, double depth, Color color) {
+		return true;
 	}
+	
 	class PixelData {
-		Color color = Color.BLACK;
+		ArrayList<Pixel> pixelDatalist = new ArrayList<>();	// List of every pixel drawn at a position
+		Color finalColor = Color.BLACK;
+	}
+	class Pixel {
+		double depth;
+		Color color;
+		
+		public Pixel(double depth, Color color) {
+			this.depth = depth;
+			this.color = color;
+		}
 	}
 }

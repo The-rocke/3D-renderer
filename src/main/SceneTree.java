@@ -66,11 +66,20 @@ public class SceneTree {
 		display.setVisible(true);
 	}
 	
-	public Object3d[] getObjectList() {
-		Object3d[] objectArray = new Object3d[objectList.size()];
-		for(int i = 0; i < objectArray.length; i++) {
-			objectArray[i] = objectList.get(i);
+	// Returns an array of triangle in the scene
+	public Triangle[] compileTriangleList() {
+		ArrayList<Triangle> triangleList = new ArrayList<>();
+		
+		for(Object3d object: objectList) {
+			triangleList.addAll(object.geometry);
 		}
-		return objectArray;
+		Triangle[] triangleArray = new Triangle[triangleList.size()];
+		
+		int arrayIndex = 0;
+		for(Triangle triangle: triangleList) {
+			triangleArray[arrayIndex] = triangle;
+			arrayIndex++;
+		}
+		return triangleArray;
 	}
 }
