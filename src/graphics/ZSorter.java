@@ -7,31 +7,26 @@ public class ZSorter {
 
 	public Pixel[] pixelList;
 	
-	public ZSorter(int width, int height) {
+	public ZSorter(int width, int height, Color defaultColour) {
 		pixelList = new Pixel[width * height];
 		for(int i = 0; i < pixelList.length; i++) {
-			pixelList[i] = new Pixel(-1, Double.POSITIVE_INFINITY, Color.BLACK);
+			pixelList[i] = new Pixel(-1, Double.POSITIVE_INFINITY, defaultColour);
 		}
 	}
 	
-	public boolean isClosest(int position, int renderPriority, double z, Color color, boolean print) {
-		boolean isCloser = pixelList[position].isBelow(renderPriority, z, print);
+	public boolean closerToEye(int position, int renderPriority, double z, Color color) {
+		boolean isCloser = pixelList[position].isBelow(renderPriority, z);
+		
 		// If new pixel is above the old one, the old pixel is overwritten
 		if(isCloser) {
-			if(print) {
-				System.out.println("o");
-			}
-			pixelList[position] = new Pixel(renderPriority, z, color);
-		}
-		if(print) {
-			System.out.println(isCloser);
-			System.out.println("");
+			pixelList[position].overwritePixel(renderPriority, z, color);
 		}
 		return isCloser;
 	}
 	
 	// Output of a pixel at a specific position 
 	class Pixel {
+		
 		int renderPriority;
 		double z;
 		Color outputColour;
@@ -42,12 +37,7 @@ public class ZSorter {
 			outputColour = colour;
 		}
 		
-		public boolean isBelow(int pixelPriority, double pixelZ, boolean print) {
-			if(print) {
-				System.out.println(pixelZ);
-				System.out.println(z);
-				System.out.println(outputColour.toString());
-			}
+		public boolean isBelow(int pixelPriority, double pixelZ) {
 			if(pixelPriority > renderPriority ) {
 				return true;
 			}
@@ -60,6 +50,12 @@ public class ZSorter {
 				}
 			}
 			return false;
+		}
+		
+		public void overwritePixel(int renderPriority, double z, Color colour) {
+			this.renderPriority = renderPriority;
+			this.z = z;
+			outputColour = colour;
 		}
 	}
 }

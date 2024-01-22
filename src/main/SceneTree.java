@@ -67,16 +67,16 @@ public class SceneTree {
 	}
 	
 	// Returns an array of triangle in the scene
-	public Triangle[] compileTriangleList() {
-		ArrayList<Triangle> triangleList = new ArrayList<>();
+	public Triangle3d[] compileTriangleList() {
+		ArrayList<Triangle3d> triangleList = new ArrayList<>();
 		
 		for(Object3d object: objectList) {
 			triangleList.addAll(object.geometry);
 		}
-		Triangle[] triangleArray = new Triangle[triangleList.size()];
+		Triangle3d[] triangleArray = new Triangle3d[triangleList.size()];
 		
 		int arrayIndex = 0;
-		for(Triangle triangle: triangleList) {
+		for(Triangle3d triangle: triangleList) {
 			triangleArray[arrayIndex] = triangle;
 			arrayIndex++;
 		}

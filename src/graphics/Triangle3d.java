@@ -1,0 +1,37 @@
+package graphics;
+
+import java.awt.Color;
+
+import math.Vector3;
+
+public class Triangle3d extends Triangle {
+	
+	public int renderPriority;
+	public Color color;
+	
+	public Triangle3d(Vector3 vert1, Vector3 vert2, Vector3 vert3, int priority, Color color) {
+		super(vert1, vert2, vert3);
+		renderPriority = priority;
+		this.color = color;
+	}
+	
+	// Gets average distance from the eye
+	public double getMeanZ(Vector3 eye) {
+		double v1Distance = eye.z - vertex1.z;
+		double v2Distance = eye.z - vertex2.z;
+		double v3Distance = eye.z - vertex3.z;
+		
+		double mean = (v1Distance + v2Distance + v3Distance) / 3;
+		
+		return mean;
+	}
+	// Gets max distance from eye
+	public double getMaxZ(Vector3 eye) {
+		double v1Distance = eye.z - vertex1.z;
+		double v2Distance = eye.z - vertex2.z;
+		double v3Distance = eye.z - vertex3.z;
+		
+		double distance = Math.max(v1Distance, Math.max(v2Distance, v3Distance));
+		return distance;
+	}
+}

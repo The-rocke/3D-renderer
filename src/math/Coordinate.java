@@ -1,7 +1,21 @@
 package math;
 
+import graphics.Triangle;
+
 
 public class Coordinate {
+	
+	public static Vector2 pointOnTriangle(Vector2 pixel, Triangle screenTriangle, Triangle triangle) {
+		int pixelsFromLeft = (int) (pixel.x - screenTriangle.getMinX());
+		int pixelsFromTop = (int) (pixel.y - screenTriangle.getMinY());
+		double xDistPerPixel = screenTriangle.getWidth() / triangle.getWidth();
+		double yDistPerPixel = screenTriangle.getHeight() / triangle.getHeight();
+		
+		double x = pixelsFromLeft * xDistPerPixel;
+		double y = pixelsFromTop * yDistPerPixel;
+
+		return new Vector2(x, y);
+	}
 	
 	// Real to screen space
 	public static Vector2 toScreenSpace(Vector3 point, Vector3 eye) {
