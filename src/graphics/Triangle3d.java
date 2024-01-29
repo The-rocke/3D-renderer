@@ -4,13 +4,19 @@ import java.awt.Color;
 
 import math.Vector3;
 
-public class Triangle3d extends Triangle {
+public class Triangle3d {
+	
+	Vector3 vertex1;
+	Vector3 vertex2;
+	Vector3 vertex3;
 	
 	public int renderPriority;
 	public Color color;
 	
 	public Triangle3d(Vector3 vert1, Vector3 vert2, Vector3 vert3, int priority, Color color) {
-		super(vert1, vert2, vert3);
+		vertex1 = vert1;
+		vertex2 = vert2;
+		vertex3 = vert3;
 		renderPriority = priority;
 		this.color = color;
 	}

@@ -76,10 +76,6 @@ public class RenderPanel extends JPanel {
 			r2.printValues();
 			r3.printValues();
 			System.out.println("---");
-			
-			Vector2 w = Coordinate.pointOnTriangle(r1, outputTriangle, face);
-			w.printValues();
-			System.out.println("---");
 									
 			// The dimensions of an imaginary rectangle around the triangle in raster space
 			int minX = (int) Math.max(0,

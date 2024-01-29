@@ -2,11 +2,16 @@ package graphics;
 
 import math.*;
 
-public class Triangle2d extends Triangle {
+public class Triangle2d {
+	
+	Vector2 vertex1;
+	Vector2 vertex2;
+	Vector2 vertex3;	
 	
 	public Triangle2d(Vector2 vert1, Vector2 vert2, Vector2 vert3) {
-		super(vert1, vert2, vert3);
-		// TODO Auto-generated constructor stub
+		vertex1 = vert1;
+		vertex2 = vert2;
+		vertex3 = vert3;
 	}
 
 	public int getOrient() {
